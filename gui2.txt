@@ -1,0 +1,45 @@
+1 and 2:
+from tkinter import *
+
+root = Tk()
+
+
+def add():
+    dic1 = {}
+    key = keyE.get()
+    value = valueE.get()
+    dic1[key] = value
+
+    for i in dic1:
+        listB.insert(END, i)
+        keyE.delete(0, 'end')
+        valueE.delete(0, 'end')
+        keyE.focus()
+
+
+lbl_1 = Label(root, text="Enter Name:")
+lbl_1.grid(row=1, column=0,sticky = E)
+
+lbl_2 = Label(root, text="Enter Mobile_num:")
+lbl_2.grid(row=2, column=0, sticky = E)
+
+keyE = Entry(root)
+keyE.grid(row=1, column=1)
+
+valueE=Entry(root)
+valueE.grid(row=2,column=1)
+
+addB=Button(root,text='ADD',command=add)
+addB.grid(row=3,column=1,sticky =E)
+
+listB=Listbox(root,height=6,width=35)
+listB.grid(row=4,column=0,rowspan=8,columnspan=2)
+
+sb=Scrollbar(root)
+sb.grid(row=4,column=1,sticky=E)
+
+listB.configure(yscrollcommand=sb.set)
+sb.configure(command=listB.yview)
+
+root.mainloop()
+
